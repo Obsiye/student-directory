@@ -10,7 +10,7 @@ def print(students)
         puts "#{y[0]} cohort ---"
 
           y[1].each do |z| 
-            
+
             if car == z[:name][0].upcase
               puts z[:name]
             end
@@ -27,7 +27,7 @@ def name_begins_with
   
  puts "Print only names begining with character...\nPlease enter a character between A-Z"
 
- character = gets.chomp.upcase
+ character = gets.chop.upcase
  character
 end
 
@@ -38,10 +38,10 @@ def input_students
 
   students = []
 
-  name = gets.chomp
+  name = gets.chop
 
   puts "Please enter the Student's cohort"
-  cohort = gets.chomp.to_sym
+  cohort = gets.chop.to_sym
   if cohort.empty? then cohort = 'January' end
 
   while !name.empty?
@@ -49,8 +49,8 @@ def input_students
     students << {name: name.capitalize, cohort: cohort.capitalize, hobbie: "Tennis" , birth_country: :Britain}
     puts "Now we have #{students.count} " + if students.count < 2 then "student" else "students" end
     
-    name = gets.chomp
-    cohort = gets.chomp.to_sym
+    name = gets.chop
+    cohort = gets.chop.to_sym
   end
   
   students
