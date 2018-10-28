@@ -28,19 +28,25 @@ def name_begins_with
 end
 
 def input_students
-  puts "Please enter the names of the students"
+
+  puts "Please enter the names of the students and their cohorts"
   puts "To finish, just hit return twice"
 
   students = []
 
   name = gets.chomp
 
+  puts "Please enter the Student's cohort"
+  cohort = gets.chomp.to_sym
+  if cohort.empty? then cohort = 'January' end
+
   while !name.empty?
 
-    students << {name: name.capitalize, cohort: :november, hobbie: "Tennis" , birth_country: :Britain}
+    students << {name: name.capitalize, cohort: cohort.capitalize, hobbie: "Tennis" , birth_country: :Britain}
     puts "Now we have #{students.count} students"
-
+    
     name = gets.chomp
+    cohort = gets.chomp.to_sym
   end
   
   students
