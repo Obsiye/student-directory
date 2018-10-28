@@ -4,21 +4,18 @@ def print_header
 end
 def print(students)
     car = name_begins_with
-  n = 0
 
-  while n < students.length
 
-    if students[n][:name].start_with?(car) && students[n][:name].length < 12
-      
       students.group_by {|x| x[:cohort]}.map do |y|
-        puts y[0]
-          y[1].each {|z| puts z[:name]}
-      end
+        puts "#{y[0]} cohort ---"
 
-      # puts "#{n + 1}. #{students[n][:name]} (#{students[n][:cohort]} cohort). Born in #{students[n][:birth_country]}"
-    end
-    n += 1
-  end
+          y[1].each do |z| 
+            
+            if car == z[:name][0].upcase
+              puts z[:name]
+            end
+          end
+      end
 
 end
 
@@ -50,7 +47,7 @@ def input_students
   while !name.empty?
 
     students << {name: name.capitalize, cohort: cohort.capitalize, hobbie: "Tennis" , birth_country: :Britain}
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count} " + if students.count < 2 then "student" else "students" end
     
     name = gets.chomp
     cohort = gets.chomp.to_sym
