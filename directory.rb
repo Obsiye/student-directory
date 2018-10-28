@@ -5,7 +5,7 @@ end
 def print(students)
     car = name_begins_with
 
-
+    if students.count > 0
       students.group_by {|x| x[:cohort]}.map do |y|
         puts "#{y[0]} cohort ---"
 
@@ -16,6 +16,7 @@ def print(students)
             end
           end
       end
+    end
 
 end
 
