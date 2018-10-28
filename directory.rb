@@ -7,8 +7,15 @@ def print(students)
   n = 0
 
   while n < students.length
+
     if students[n][:name].start_with?(car) && students[n][:name].length < 12
-      puts "#{n + 1}. #{students[n][:name]} (#{students[n][:cohort]} cohort). Born in #{students[n][:birth_country]}"
+      
+      students.group_by {|x| x[:cohort]}.map do |y|
+        puts y[0]
+          y[1].each {|z| puts z[:name]}
+      end
+
+      # puts "#{n + 1}. #{students[n][:name]} (#{students[n][:cohort]} cohort). Born in #{students[n][:birth_country]}"
     end
     n += 1
   end
