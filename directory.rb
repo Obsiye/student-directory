@@ -47,7 +47,7 @@ def input_students
 
   while !name.empty?
 
-    @students << {name: name.capitalize, cohort: cohort.capitalize, hobbie: "Tennis" , birth_country: :Britain}
+    append_students(name,cohort)
     puts "Now we have #{@students.count} " + if @students.count < 2 then "student" else "students" end
     
     name = STDIN.gets.chop
@@ -110,7 +110,7 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}
+    append_students(name,cohort)
   end
   file.close
 end
@@ -125,6 +125,10 @@ def try_load_students
     puts "Sorry, #{filename} doesn't exist."
     exit # quit the program
   end
+end
+
+def append_students(name,cohort)
+  @students << {name: name.capitalize, cohort: cohort.to_sym.capitalize}
 end
 
 try_load_students
